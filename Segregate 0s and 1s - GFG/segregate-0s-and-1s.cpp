@@ -9,23 +9,40 @@ using namespace std;
 
 class Solution{   
 public:
-    void segregate0and1(int arr[], int n) {
+    void segregate0and1(int a[], int n) {
         
-        int count0 = 0, count1 = 0;
+        // One approach
         
-        for(int i=0;i<n;i++){
-            if(arr[i] == 0)
-                count0++;
-            else
-                count1++;
-        }
+        // int count0 = 0, count1 = 0;
         
-        for(int i=0;i<count0;i++){
-            arr[i] = 0;
-        }
+        // for(int i=0;i<n;i++){
+        //     if(arr[i] == 0)
+        //         count0++;
+        //     else
+        //         count1++;
+        // }
         
-        for(int i=count0;i<(count0+count1);i++){
-            arr[i] = 1;
+        // for(int i=0;i<count0;i++){
+        //     arr[i] = 0;
+        // }
+        
+        // for(int i=count0;i<(count0+count1);i++){
+        //     arr[i] = 1;
+        // }
+        
+        //Second Approach
+        
+        int low = 0, high = n-1;
+        while(low<high){
+            if(a[low] == 0)
+                low++;
+            else if(a[high] == 1)
+                high--;
+            else{
+                swap(a[low], a[high]);
+                low++;
+                high--;
+            }
         }
         
     }

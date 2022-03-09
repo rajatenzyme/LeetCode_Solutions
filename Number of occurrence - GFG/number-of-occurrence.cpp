@@ -9,7 +9,6 @@ using namespace std;
  // } Driver Code Ends
 //User function template for C++
 int lastOcc(int nums[], int n, int target){
-    
         int ans = -1;
         
         int low = 0;
@@ -65,8 +64,6 @@ int lastOcc(int nums[], int n, int target){
         return ans;
     }
     
-
-
 
 
 

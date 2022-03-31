@@ -6,7 +6,7 @@ public:
     
     
     MyHashSet() {
-        sz = 10000;
+        sz = 1000;
         m.resize(sz);
     }
     

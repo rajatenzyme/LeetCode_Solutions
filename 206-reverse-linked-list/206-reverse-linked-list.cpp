@@ -24,6 +24,13 @@ public:
         
         if(!head) return NULL;
         
-        return reverse(head);
+         if(!head->next) return head;
+        
+        ListNode *reverseHead = reverseList(head->next);
+        head->next->next = head;
+        head->next = NULL;
+        return reverseHead;
+        
+        //return reverse(head);
     }
 };

@@ -14,17 +14,16 @@ public:
         
         if(head == NULL) return NULL;
         
-        ListNode *p = NULL;
-        ListNode *c = head, *n = head->next;
+        ListNode *prev = NULL, *curr = head, *next = head->next;
         
-        while(c!=NULL){
-            c->next = p;
-            p = c;
-            c = n;
-            if(n!=NULL)n = n->next;
+        while(curr!=NULL){
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+            if(next!=NULL)next = next->next;
 
         }
-        return p;
+        return prev;
         
     }
 };

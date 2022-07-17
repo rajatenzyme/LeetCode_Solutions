@@ -10,18 +10,21 @@ class Solution {
 public:
     void deleteNode(ListNode* node) {
         
-        if(node -> next == NULL) delete node;
+        //If only one node available
+        if(node->next == NULL)
+            delete node;
         
-        //First Swap node->val with the next's val
-        // Then delete next node from the list
+        //Now first swap the value of curr to next node
+        // 4 5 1 9 => delete 5
+        // 4 1 5 9
         
         swap(node->val, node->next->val);
         
-        ListNode *tmp = node->next;
+        //ListNode * temp = node -> next;
         
-        node->next = tmp->next;
+        node->next = node->next->next;
         
-        delete tmp;
+        //delete temp;
         
         
     }

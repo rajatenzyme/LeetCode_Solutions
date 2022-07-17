@@ -8,10 +8,10 @@ public:
         int maxi = 0;
         int ans = 0;
         
-        for(int i=0;i<n;i++){
+        for(int i=1;i<n;i++){
            
-            ans += max(maxi, prices[i] - mini);
-            mini = prices[i];
+            ans += max(maxi, prices[i] - prices[i-1]);
+            //mini = prices[i];
             
         }
         return ans;

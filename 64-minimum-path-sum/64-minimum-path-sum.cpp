@@ -1,18 +1,18 @@
 class Solution {
 public:
-    int f(int i, int j, vector<vector<int>> &grid, vector<vector<int>> &dp){
+    int f(int i, int j, int m, int n , vector<vector<int>> &grid, vector<vector<int>> &dp){
     
-        if(i == 0 && j == 0)
-            return grid[0][0];
+        if(i == m-1 && j == n-1)
+            return grid[m-1][n-1];
 
-        if(i<0 || j < 0)
+        if(i>=m || j >= n)
             return 1e9;
 
         if(dp[i][j]!=-1)
             return dp[i][j];
 
-        int up = grid[i][j] + f(i-1,j,grid,dp);
-        int down = grid[i][j] + f(i,j-1,grid,dp);
+        int up = grid[i][j] + f(i+1,j,m,n,grid,dp);
+        int down = grid[i][j] + f(i,j+1,m,n,grid,dp);
 
         return dp[i][j] = min(up, down);
     
@@ -26,7 +26,7 @@ public:
 
         vector<vector<int>> dp(m, vector<int>(n, -1));
 
-        return f(m-1, n-1, grid, dp);
+        return f(0, 0, m, n,  grid, dp);
         
     }
 };

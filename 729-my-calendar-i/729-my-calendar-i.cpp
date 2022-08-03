@@ -1,7 +1,7 @@
 class MyCalendar {
 public:
     
-    unordered_map<int, int> mp;
+    map<int, int> mp;
     
     MyCalendar() {
         
@@ -26,16 +26,27 @@ public:
         
 //         //mp[start] = end;
         
-        for(auto x : mp){
-            if( (x.second > start && x.first<=start)
-                || (x.first>start && x.second<=end ) 
-                || (x.second >= end && x.first<end)
+//         for(auto x : mp){
+//             if( (x.second > start && x.first<=start)
+//                 || (x.first>start && x.second<=end ) 
+//                 || (x.second >= end && x.first<end)
               
-            )
-                return false;    
+//             )
+//                 return false;    
+//         }
+//         mp[start] = end;
+//         return true;
+        
+        auto it = mp.upper_bound(start);
+		// it->first = min end time greater than start
+		// it->second = start time of above obtained end time
+        if (it == mp.end() || it->second >= end)
+        {
+            mp[end] = start;
+            return true;
         }
-        mp[start] = end;
-        return true;
+        else
+            return false;
         
     }
 };

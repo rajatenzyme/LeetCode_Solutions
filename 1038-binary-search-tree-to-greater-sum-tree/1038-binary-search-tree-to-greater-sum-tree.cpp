@@ -12,16 +12,16 @@
 class Solution {
 public:
     
-    void ans(TreeNode * root, int *sum){
+    void ans(TreeNode * root, int &sum){
         
         if(!root)
             return ;
         
-          ans(root->right,sum);
-        
-            *sum=*sum+root->val;
-        root->val=*sum;
-           ans(root->left,sum);
+        ans(root->right,sum);
+
+        sum= sum+root->val;
+        root->val= sum;
+        ans(root->left,sum);
         
         
         
@@ -53,7 +53,7 @@ public:
         
         int sum =0;
         
-        ans(root,&sum);
+        ans(root,sum);
         
         //inorder(root);
         

@@ -6,7 +6,8 @@ public:
         int r = 0;
         int ans = 0;
         
-        int store[256] = {0};
+        //int store[256] = {0};
+        unordered_map<int, int> store;
         
         
         while(r < s.length()){

@@ -1,25 +1,25 @@
 class Solution {
 public:
+    
+    bool isContains(queue<int> q, int x){
+        while(!q.empty()){
+            if(q.front() == x)
+                return true;
+            q.pop();
+        }
+        return false;
+    }
+    
+    
     int lengthOfLongestSubstring(string s) {
-        
-        int l = 0;
-        int r = 0;
+        queue<int> q;
         int ans = 0;
-        
-        //int store[256] = {0};
-        unordered_map<int, int> store;
-        
-        
-        while(r < s.length()){
-            store[s[r]]++;
-            
-            while(store[s[r]]>1){
-                store[s[l]]--;
-                l++;
-            }
-            
-            ans = max(ans, r-l+1);
-            r++;
+        for(int i=0;i<s.size();i++){
+            while(isContains(q,s[i]))
+                q.pop();
+            q.push(s[i]);
+            int n = q.size();
+            ans = max(ans, n);
         }
         
         return ans;

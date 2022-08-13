@@ -42,20 +42,6 @@ public:
         
         if(num2_count > nums.size()/3)
             ans.push_back(num2);
-
-        
-        
-//         if(num1_count > num2_count)
-//             return {num1};
-//         else if(num1_count<num2_count)
-//             return {num2};
-//         else{
-//             if(num1 != -1)
-//                 ans.push_back(num1);
-//             if(num2!=-1)
-//                 ans.push_back(num2);
-//         }
-    
         
         return ans;
         

@@ -13,7 +13,6 @@ public:
                 str+=dict[words[i][j]-'a'];
             }
             st.insert(str);
-            cout<<str<<" ";
         }
         
         return st.size();

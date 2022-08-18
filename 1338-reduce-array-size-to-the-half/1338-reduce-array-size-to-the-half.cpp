@@ -18,7 +18,7 @@ public:
     
     int minSetSize(vector<int>& arr) {
         
-        set<int> st;
+        // set<int> st;
         
         int n = arr.size();
         int half = n / 2;
@@ -40,19 +40,19 @@ public:
         //     pq.pop();
         // }
         
-        
+        int c = 0;
         while(n > half){
-            // pair<int, int> p = findmx(mp);
             pair<int, int> p = pq.top();
             pq.pop();
             //cout<<p.first<<" "<<p.second<<endl;
-            st.insert(p.second);
+            c++;
+            // st.insert(p.second);
             n-=p.first;
-            //mp[p.first] = 0;
+     
             
         }
         
-        return st.size();
+        return c;
         
         
         

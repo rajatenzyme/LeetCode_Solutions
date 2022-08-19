@@ -11,33 +11,25 @@
  */
 class Solution {
 public:
-    int sumNumbers(TreeNode* root) {
-        
-        queue<pair<TreeNode *, int>> q;
-        q.push({root, 0});
-        
-        int sum = 0;
-        
-        while(!q.empty()){
-            
-            TreeNode * curr = q.front().first;
-            int tmp = q.front().second;
-            q.pop();
-            
-            tmp = tmp * 10 + curr->val;
-            if(curr->left)
-                 q.push({curr->left, tmp});
-            if(curr->right)
-                q.push({curr->right, tmp});
-            
-            
-            if(!curr->left && !curr->right)
-                sum+=tmp;
-            
-            
+    int util(TreeNode *root, int val){
+
+        if(!root)
+            return 0;
+
+        int leaf = 0, left = 0, right = 0;
+        if(!root->left && !root->right){
+            leaf = root->val + val*10;
         }
-        
-        return sum;
-        
+
+        left = util(root->left, val * 10 + root->val);
+        right = util(root->right, val * 10 + root->val);
+
+        return leaf + left + right;
+    }
+    int sumNumbers(TreeNode* root) {
+        if(!root)
+            return 0;
+
+        return util(root,0);
     }
 };

@@ -22,7 +22,7 @@ public:
     }
     
     bool search(string word) {
-        for (auto &&s : mp[word.size()])
+        for (auto &s : mp[word.size()])
                if (isEqual(s, word))
                     return true;
           return false;

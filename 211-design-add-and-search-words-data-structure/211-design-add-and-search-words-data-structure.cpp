@@ -6,7 +6,7 @@ public:
     
     unordered_map<int, vector<string> > mp;
     
-    bool isEqual(string &a, string &b){
+    bool isEqual(const string &a, const string &b){
         for(int i=0;i<a.length();i++){
             if(b[i] == '.')
                 continue;
@@ -22,7 +22,7 @@ public:
     }
     
     bool search(string word) {
-        for (auto &s : mp[word.size()])
+        for (auto &&s : mp[word.size()])
                if (isEqual(s, word))
                     return true;
           return false;

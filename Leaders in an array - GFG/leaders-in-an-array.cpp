@@ -11,24 +11,29 @@ using namespace std;
 class Solution{
     //Function to find the leaders in the array.
     public:
-    
-    bool isValid(int a[], int i, int n){
-        
-        for(int j=i+1;j<n;j++){
-            if(a[i] < a[j])
-                return false;
-        }
-        return true;
-    }
+  
     
     
     vector<int> leaders(int a[], int n){
         // Code here
         
         vector<int> ans;
+        vector<int>maxRight;
+        
+        vector<int>a_2;
+        for(int i=n-1;i>=0;i--)
+            a_2.push_back(a[i]);
+            
+        maxRight.push_back(a_2[0]);
+        
+        for(int i=1;i<n;i++){
+          maxRight.push_back(max(a_2[i], maxRight[i-1]));
+        }
+        
+        reverse(maxRight.begin(), maxRight.end());
         
         for(int i=0;i<n;i++){
-           if(isValid(a, i, n))
+            if(a[i] == maxRight[i])
                 ans.push_back(a[i]);
         }
         

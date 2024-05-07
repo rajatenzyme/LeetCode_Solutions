@@ -35,8 +35,7 @@ public:
         head = reverseLL(head);
 
         if(carry!=0){
-            ListNode* new_node = new ListNode();
-            new_node->val = carry;
+            ListNode* new_node = new ListNode(carry);
             new_node -> next = head;
             head = new_node;
         }
